@@ -1,22 +1,19 @@
 <template lang="en">
 <div>
     <ul>
-        <li>todo 1</li>
+        <TodoItem />
     </ul>
 </div>
 </template>
 <script>
+import TodoItem from "./TodoItem.vue";
 export default {
   name: "TodoList",
+  components: {
+    TodoItem,
+  },
 };
 </script>
 
 <style>
-    ul {
-        padding: 0;
-    }
-
-    li {
-        color: blue;
-    }
 </style>
