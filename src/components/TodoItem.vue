@@ -1,15 +1,12 @@
 <template>
-  <li>
-      Todo item 1
-  </li>
+  <b-list-group-item>Cras justo odio</b-list-group-item>
 </template>
 
 <script>
 export default {
-name:'TodoItem'
-}
+  name: "TodoItem",
+};
 </script>
 
 <style>
-
 </style>

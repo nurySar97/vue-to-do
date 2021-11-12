@@ -1,9 +1,9 @@
 <template lang="en">
-<div>
-    <ul>
-        <TodoItem />
-    </ul>
-</div>
+  <div>
+    <b-list-group>
+      <TodoItem />
+    </b-list-group>
+  </div>
 </template>
 <script>
 import TodoItem from "./TodoItem.vue";
@@ -15,5 +15,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
