@@ -1,7 +1,11 @@
 <template>
   <div>
     <b-list-group>
-      <TodoItem v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo" />
+      <TodoItem
+        v-on:remove-todo="removeTodo"
+        v-for="todo in todos" :key="todo.id"
+        v-bind:todo="todo"
+      />
     </b-list-group>
   </div>
 </template>
@@ -12,6 +16,11 @@ export default {
   props: ["todos"],
   components: {
     TodoItem,
+  },
+  methods: {
+    removeTodo(id) {
+      this.$emit('remove-todo', id)
+    },
   },
 };
 </script>

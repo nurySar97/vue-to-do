@@ -1,22 +1,29 @@
 <template>
   <b-list-group-item>
-    <b-row>
-      <b-col class="pl-3" cols="10">
+    <div class="d-flex">
+      <div
+        class="p-2 flex-grow-1 d-flex align-items-center"
+        v-bind:class="{ del: todo.completed }"
+      >
         {{ todo.title }}
-      </b-col>
-      <b-col class="p-0 text-end" cols="1">
+      </div>
+      <div class="p-2 d-flex align-items-center">
         <b-form-checkbox
-          id="checkbox-1"
+          size="lg"
+          v-on:change="todo.completed = !todo.completed"
           v-model="todo.completed"
-          name="checkbox-1"
-          value="todo.completed"
-          unchecked-value="completed"
         />
-      </b-col>
-      <b-col class="p-0 text-center" cols="1">
-        <b-button size="sm" variant="danger">&times;</b-button>
-      </b-col>
-    </b-row>
+      </div>
+      <div class="p-2">
+        <b-button
+          class="fw-bold fs-4"
+          size="sm"
+          variant="danger"
+          v-on:click="$emit('remove-todo', todo.id)"
+          >&times;</b-button
+        >
+      </div>
+    </div>
   </b-list-group-item>
 </template>
 
@@ -32,4 +39,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.del {
+  text-decoration: line-through;
+}
+</style>
