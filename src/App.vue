@@ -1,50 +1,17 @@
 <template>
-  <div class="p-3" id="app">
-    <div class="container">
-      <h1>Todo application</h1>
-      <hr />
-      <AddTodo @add-todo="addTodo" />
-      <TodoList v-if="loaded" v-bind:todos="todos" @remove-todo="removeTodo" />
-      <div class="text-center" v-if="!loaded">
-        <b-spinner variant="primary" />
-      </div>
+  <div id="app">
+    <b-navbar class="px-3" toggleable="sm" type="dark" variant="primary">
+      <b-navbar-brand href="/todos">Todo</b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse" />
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="/">Home</b-nav-item>
+          <b-nav-item href="/todos">Todos</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <div class="container p-3">
+      <router-view />
     </div>
   </div>
 </template>
-
-<script>
-import TodoList from "@/components/TodoList.vue";
-import AddTodo from "./components/AddTodo.vue";
-
-export default {
-  name: "App",
-  async mounted() {
-    const sleep = (time) => new Promise((r) => setTimeout(r, time));
-    const resp = await fetch(
-      "https://jsonplaceholder.typicode.com/todos?_limit=10"
-    );
-    const data = await resp.json();
-    await sleep(2000);
-    this.todos = data;
-    this.loaded = true;
-  },
-  data() {
-    return {
-      todos: [],
-      loaded: false,
-    };
-  },
-  components: {
-    TodoList,
-    AddTodo,
-  },
-  methods: {
-    addTodo(todo) {
-      this.todos.push(todo);
-    },
-    removeTodo(id) {
-      this.todos = this.todos.filter((todo) => todo.id !== id);
-    },
-  },
-};
-</script>
