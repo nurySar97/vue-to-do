@@ -1,10 +1,13 @@
 <template>
-  <div id="app">
+  <div class="p-3" id="app">
     <div class="container">
       <h1>Todo application</h1>
       <hr />
       <AddTodo @add-todo="addTodo" />
-      <TodoList v-bind:todos="todos" @remove-todo="removeTodo" />
+      <TodoList v-if="loaded" v-bind:todos="todos" @remove-todo="removeTodo" />
+      <div class="text-center" v-if="!loaded">
+        <b-spinner variant="primary" />
+      </div>
     </div>
   </div>
 </template>
@@ -15,13 +18,20 @@ import AddTodo from "./components/AddTodo.vue";
 
 export default {
   name: "App",
+  async mounted() {
+    const sleep = (time) => new Promise((r) => setTimeout(r, time));
+    const resp = await fetch(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+    );
+    const data = await resp.json();
+    await sleep(2000);
+    this.todos = data;
+    this.loaded = true;
+  },
   data() {
     return {
-      todos: [
-        { id: 1, title: "Buy bread", completed: true },
-        { id: 2, title: "Clear room", completed: false },
-        { id: 3, title: "Buy beer", completed: false },
-      ],
+      todos: [],
+      loaded: false,
     };
   },
   components: {
