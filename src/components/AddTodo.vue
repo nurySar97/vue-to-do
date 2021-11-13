@@ -24,7 +24,7 @@ export default {
     };
   },
   methods: {
-    onSubmit(e) {
+    onSubmit() {
       if (this.title.trim()) {
         this.$emit("add-todo", {
           id: this.$uuid.v4(),
@@ -32,7 +32,7 @@ export default {
           completed: false,
         });
       }
-      e.target.reset();
+      this.title = "";
     },
   },
 };

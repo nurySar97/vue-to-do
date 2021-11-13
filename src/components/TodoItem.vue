@@ -5,12 +5,13 @@
         class="p-2 flex-grow-1 d-flex align-items-center"
         v-bind:class="{ del: todo.completed }"
       >
-        {{ todo.title }}
+        {{ index + 1 }}) {{ todo.title }}
       </div>
       <div class="p-2 d-flex align-items-center">
         <b-form-checkbox
           size="lg"
           v-on:change="todo.completed = !todo.completed"
+          v-model="completed"
         />
       </div>
       <div class="p-2">
@@ -28,7 +29,13 @@
 
 <script>
 export default {
+  data() {
+    return {
+      completed: this.todo.completed,
+    };
+  },
   props: {
+    index: Number,
     todo: {
       type: Object,
       required: true,
