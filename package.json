@@ -2,10 +2,11 @@
   "name": "vue-to-do",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nurySar97.github.io/vue-to-do",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "gh-pages": "gh-pages -d build",
+    "gh-pages": "gh-pages -d dist",
     "deploy": "run-s build gh-pages"
   },
   "dependencies": {
