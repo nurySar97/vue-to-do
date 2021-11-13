@@ -11,7 +11,6 @@
         <b-form-checkbox
           size="lg"
           v-on:change="todo.completed = !todo.completed"
-          v-model="todo.completed"
         />
       </div>
       <div class="p-2">

@@ -3,7 +3,8 @@
     <b-list-group>
       <TodoItem
         v-on:remove-todo="removeTodo"
-        v-for="todo in todos" :key="todo.id"
+        v-for="todo in todos"
+        :key="todo.id"
         v-bind:todo="todo"
       />
     </b-list-group>
@@ -19,7 +20,7 @@ export default {
   },
   methods: {
     removeTodo(id) {
-      this.$emit('remove-todo', id)
+      this.$emit("remove-todo", id);
     },
   },
 };

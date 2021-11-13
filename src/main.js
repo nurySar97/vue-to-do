@@ -2,6 +2,9 @@ import "./assets/css/app.css";
 import Vue from "vue";
 import App from "./App.vue";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import UUID from "vue-uuid";
+ 
+Vue.use(UUID);
 
 Vue.config.productionTip = false;
 
