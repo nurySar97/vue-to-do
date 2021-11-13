@@ -5,7 +5,8 @@
         class="p-1 flex-grow-1 d-flex align-items-center"
         v-bind:class="{ del: todo.completed }"
       >
-        {{ index + 1 }}) {{ todo.title }}
+        {{ index + 1 }})
+        <span class="ps-1 text-capitalize">{{ todo.title }}</span>
       </div>
       <div class="p-1 d-flex align-items-center">
         <b-form-checkbox
@@ -33,6 +34,11 @@ export default {
     return {
       completed: this.todo.completed,
     };
+  },
+  watch: {
+    todo(value) {
+      this.completed = value.completed;
+    },
   },
   props: {
     index: Number,

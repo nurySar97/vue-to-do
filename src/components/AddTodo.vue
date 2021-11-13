@@ -13,6 +13,11 @@
         >
       </b-input-group-append>
     </b-input-group>
+    <b-form-select
+      class="mt-3 form-select"
+      :options="options"
+      v-model="selected"
+    />
   </b-form>
 </template>
 
@@ -21,7 +26,18 @@ export default {
   data() {
     return {
       title: "",
+      selected: "all",
+      options: [
+        { value: "all", text: "All" },
+        { value: "completed", text: "Completed" },
+        { value: "not-completed", text: "Not completed" },
+      ],
     };
+  },
+  watch: {
+    selected(value) {
+      this.$emit("filter-todos", value);
+    },
   },
   methods: {
     onSubmit() {
