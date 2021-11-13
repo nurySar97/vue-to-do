@@ -22,7 +22,7 @@ export default {
       "https://jsonplaceholder.typicode.com/todos?_limit=10"
     );
     const data = await resp.json();
-    await sleep(2000);
+    await sleep(1000);
     this.todos = data;
     this.loaded = true;
   },
